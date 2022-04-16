@@ -1,5 +1,3 @@
-from marshmallow import Schema, fields
-
 from project.dao.models.base import BaseMixin
 from project.setup_db import db
 
@@ -16,10 +14,3 @@ class User(BaseMixin, db.Model):
 
     def __repr__(self):
         return f"<User '{self.name.title()}'>"
-
-
-class UserSchema(Schema):
-    id = fields.Int()
-    email = fields.Str()
-    password = fields.Str()
-    surname = fields.Str()

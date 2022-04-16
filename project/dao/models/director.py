@@ -1,5 +1,3 @@
-from marshmallow import Schema, fields
-
 from project.dao.models.base import BaseMixin
 from project.setup_db import db
 
@@ -11,8 +9,3 @@ class Director(BaseMixin, db.Model):
 
     def __repr__(self):
         return f"<Director '{self.name.title()}'>"
-
-
-class DirectorSchema(Schema):
-    id = fields.Int()
-    name = fields.Str()

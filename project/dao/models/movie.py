@@ -1,5 +1,3 @@
-from marshmallow import Schema, fields
-
 from project.dao.models.base import BaseMixin
 from project.setup_db import db
 
@@ -19,12 +17,3 @@ class Movie(BaseMixin, db.Model):
 
     def __repr__(self):
         return f"<Movie '{self.name.title()}'>"
-
-
-class MovieSchema(Schema):
-    id = fields.Int()
-    title = fields.Str()
-    description = fields.Str()
-    trailer = fields.Str()
-    year = fields.Int()
-    rating = fields.Float()
