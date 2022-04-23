@@ -1,0 +1,67 @@
+POST http://127.0.0.1:5000/auth/register
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "admin1",
+  "password": "admin1"
+}
+
+###
+
+POST http://127.0.0.1:5000/auth/login
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "admin1",
+  "password": "admin1"
+}
+
+###
+
+PUT http://127.0.0.1:5000/auth/login
+Accept: application/json
+Content-Type: application/json
+
+{
+    "refresh_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImFkbWluMSIsImV4cCI6MTY2MTk0NzM5Nn0.KvU6oL_kvazlo76gcy41QjCHf3iYvMr85PawPcPQQhg"
+}
+
+###
+
+GET http://127.0.0.1:5000/user/1
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImFkbWluIiwiZXhwIjoxNjUwNzE2MDcyfQ.jN0LlNUdDMSJbLgSgOx3FsE_H1IXPqCfRots0iKyrFI
+
+###
+
+PATCH http://127.0.0.1:5000/user/1
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImFkbWluIiwiZXhwIjoxNjUwNzE2MDcyfQ.jN0LlNUdDMSJbLgSgOx3FsE_H1IXPqCfRots0iKyrFI
+
+{
+  "surname": "admin"
+}
+
+###
+
+PUT http://127.0.0.1:5000/user/1/password
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImFkbWluIiwiZXhwIjoxNjUwNzE2MDcyfQ.jN0LlNUdDMSJbLgSgOx3FsE_H1IXPqCfRots0iKyrFI
+
+{
+  "old_password": "admin",
+  "new_password": "admin1"
+}
+
+###
+
+
+
+
+
+

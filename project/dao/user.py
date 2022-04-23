@@ -27,6 +27,7 @@ class UserDAO:
         self._db_session.commit()
         return user
 
+
     def delete(self, user):
         self._db_session.delete(user)
         self._db_session.commit()
