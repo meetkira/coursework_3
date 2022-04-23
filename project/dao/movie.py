@@ -2,7 +2,7 @@ from sqlalchemy.orm.scoping import scoped_session
 
 from project.dao.models import Movie
 
-# исправить пангинацию
+
 class MovieDAO:
     def __init__(self, session: scoped_session):
         self._db_session = session
@@ -19,6 +19,5 @@ class MovieDAO:
     def get_new(self, movies_query):
         return movies_query.order_by(Movie.year.desc())
 
-    #исправить пангинацию
-    def get_pages(self, movies_query, limit):
-        return movies_query.limit(limit)
+    def get_pages(self, movies_query, limit, offset):
+        return movies_query.limit(limit).offset(offset)

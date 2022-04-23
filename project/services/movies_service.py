@@ -1,3 +1,5 @@
+from flask import current_app
+
 from project.dao import MovieDAO
 from project.exceptions import ItemNotFound
 from project.schemas.movie import MovieSchema
@@ -14,11 +16,15 @@ class MoviesService(BaseService):
     def get_all_movies(self, data):
 
         movies = MovieDAO(self._db_session).get_movies()
-        if data["status"] == "new":
-            movies = MovieDAO(self._db_session).get_new(movies)
-        if data["page"]:
+        if "status" in data:
+            # сортировка по году выпуска(сначала новые)
+            if data.get("status") == "new":
+                movies = MovieDAO(self._db_session).get_new(movies)
+        if "page" in data:
             # пангинация
-            movies = MovieDAO(self._db_session).get_pages(movies, limit=data["page"])
+            limit = current_app.config["ITEMS_PER_PAGE"]
+            offset = (data.get("page") - 1) * limit
+            movies = MovieDAO(self._db_session).get_pages(movies, limit=limit, offset=offset)
 
         movies = MovieDAO(self._db_session).get_all(movies)
 
